@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html ng-app="app">
+
+<head>
+    <title>Movie Search</title>
+    <link href="index.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+</head>
+
+
+<body ng-controller="movController">
+
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Movie Search</h1>
+            <p>A Movie Search Portal Made with AngularJs.</p>
+        </div>
+
+
+    </div>
+
+    <div class='container'>
+        <form class="form-horizontal">
+            <div class="form-group">
+        <div class="col-md-offset-4 col-md-4 col-xs-12 ">
+            <input type="text" ng-model="search" placeholder="Enter Your Movie Here" ng-required="true">
+            <button ng-click="submit(search)" class="btn btn-success">Submit</button>
+        </div>
+    </div>
+        </form>
+    </div>
+    <br/>
+    <div class='container'>
+        <div class="row">
+            <div class="col-md-6 col-lg-6 col-xs-12">
+
+                <div ng-repeat="t in model.movie.results track by $index">
+                    <ul>
+                        <li> <h4>{{t.title}}</h4></li>
+                    <button type="submit" ng-click="getDetail($index)" class="btn btn-primary">Details</button>
+                    </ul>
+
+
+                </div>
+            </div>
+
+            <div class='col-md-6 col-lg-6 col-xs-12' ng-show="truth==true">
+
+                <div class="panel panel-default" >
+                    <div class="panel-heading"><strong>{{model.details.title}}</strong></div>
+                    <div class="panel-body" align="center">
+                    
+                        <img src="https://image.tmdb.org/t/p/w500/{{model.details.poster_path}}" class="img-thumbnail" width="304" height="236">
+                        
+                        <pre><strong>Release Date:</strong> {{model.details.release_date}}</pre>
+                        <pre><strong>Rating:</strong> {{model.details.vote_average}}</pre>
+                        <pre><strong>Language:</strong> {{model.details.original_language}}</pre>
+                        <pre><strong>Description:</strong><p> {{model.details.overview}}</p></pre>
+                    
+                    
+                    
+                    
+                    </div>
+                </div>
+
+
+            </div>
+            
+            
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular-resource.min.js"></script>>
+    <script src="./app/app.js"></script>
+    <script src="./app/movController.js"></script>
+
+</body>
+
+</html>
